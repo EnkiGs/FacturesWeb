@@ -1,0 +1,87 @@
+body{
+	background-image: url("../images/maman.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 500px;
+}
+
+.connexion{
+	margin-top: 50px;
+	width : 400px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 23px;
+	color: black;
+}
+
+.connexion h2, .connexion .button{
+	font-weight: bold;
+	text-decoration: underline;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.erreur{
+	border-style: solid;
+	border-color: red;
+	border-radius: 8px;
+	background-color: rgba(255,0,0,0.4);
+	font-weight: bold;
+	font-size: 25px;
+	margin: 10px;
+	padding: 5px;
+}
+
+.form-control{
+	margin-left: auto;
+	margin-right: auto;
+	width : 200px;
+}
+/*
+
+.erreur{
+	border-style: solid;
+	border-color: red;
+	border-radius: 8px;
+	background-color: rgba(255,0,0,0.4);
+	font-weight: bold;
+	font-size: 15px;
+	margin: 10px;
+	padding: 5px;
+	display: inline-block;
+}
+
+#erreurco{
+	margin: 0px;
+}
+
+footer{
+	margin-top: 10px;
+}
+
+.news{
+	padding: 5px;
+	border-style: solid;
+	border-width: 2px;
+	margin: 10px;
+}
+
+.co{
+	margin: 5px;
+	float:right;
+}
+
+.add{
+	margin: 5px;
+	float:left;
+}
+
+nav{
+	margin-left: 40%;
+}
+
+.bouton{
+	border: 1px solid grey;
+	border-radius: 4px;
+	margin: 1px;
+}*/

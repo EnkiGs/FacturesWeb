@@ -10,41 +10,27 @@ class FrontController
 {
     public function __construct()
     {
-        global $rep,$vues,$nbPage;
+        global $rep,$vues;
         session_start();
-        $listeActions_Admin=array('deconnexion','inscriptionClick','inscription',NULL);
-        $mdl_admin=new ModeleAdmin();
+        $listeActions_Visitor=array(NULL,'connexion');
+        $mdl_user=new ModeleUser();
         try{
-            $a=$mdl_admin->isAdmin();
+            $a=$mdl_user->isUser();
             if(isset($_REQUEST['action'])==false){
                 $action=NULL;
             }
             else{
                 $action=Nettoyage::nettoyerString($_REQUEST['action']);
             }
-            if(isset($_REQUEST['nbPage'])==true){
-                $nbPage=$_REQUEST['nbPage'];
-            }
-            if(in_array($action,$listeActions_Admin)){
-                if($a==NULL){
-
-                    if($action==NULL){
-                        new UserControleur();
-                    }
-                    else{
-                        require($rep.$vues['auth']);
-                    }
-                }
-                else{
-                    new AdminCtrl();
-                }
+            if(!in_array($action,$listeActions_Visitor) && $a!=NULL){
+                new UserController();
             }
             else{
-                new UserControleur();
+                new VisitorController();
             }
         }
         catch (Exception $e){
-            $dVueErreur[] =	"Problème FrontController";
+            $erreurs[] = "Problème FrontController";
             require ($rep.$vues['erreur']);
         }
     }

@@ -12,7 +12,6 @@ class Facture
 
     /**
      * Facture constructor.
-     * @param $id
      * @param $client
      * @param $dateE
      * @param $objet
@@ -46,14 +45,6 @@ class Facture
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**

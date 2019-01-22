@@ -6,36 +6,36 @@
  * Time: 11:34
  */
 
-class ModeleAdmin
+class ModeleUser
 {
     private $gateway;
     public function __construct()
     {
-        $this->gateway= new AdminGateway();
+        $this->gateway= new UserGateway();
     }
 
     public function connexion($login,$pwd){
         $login=Nettoyage::nettoyerString($login);
         $pwd=Nettoyage::nettoyerString($pwd);
-        $r=$this->gateway->checkAdmin($login,$pwd);
+        $r=$this->gateway->checkUser($login,$pwd);
         if($r==false){
             return NULL;
         }
-        $_SESSION['role']="admin";
+        $_SESSION['role']="user";
         $_SESSION['login']=$login;
-        return new Admin($login);
+        return 1;
     }
 
     public function inscription($login,$pwd){
         $login=Nettoyage::nettoyerString($login);
         $pwd=Nettoyage::nettoyerString($pwd);
-        $r=$this->gateway->addAdmin($login,$pwd);
+        $r=$this->gateway->addUser($login,$pwd);
         if($r==false){
             return NULL;
         }
-        $_SESSION['role']="admin";
+        $_SESSION['role']="user";
         $_SESSION['login']=$login;
-        return new Admin($login);
+        return 1;
     }
 
     public function deconnexion(){
@@ -44,16 +44,19 @@ class ModeleAdmin
         $_SESSION=array();
     }
 
-    public function isAdmin(){
-        if(isset($_SESSION['login']) && isset($_SESSION['role']) && $_SESSION['role']=='admin'){
-            $login=Nettoyage::nettoyerString($_SESSION['login']);
-            return new Admin($login);
+    public function isUser(){
+        if(isset($_SESSION['login']) && isset($_SESSION['role']) && $_SESSION['role']=='user'){
+            return 1;
         }
         return NULL;
     }
 
-    public function addAdmin($login,$pwd){
-        $this->gateway->addAdmin($login,$pwd);
+    public function addUser($login,$pwd,$nom, $num, $email, $adresse, $tel){
+        return $this->gateway->addUser($login,$pwd,$nom, $num, $email, $adresse, $tel);
+    }
+
+    public function getUser($login){
+        return $this->gateway->getUser($login);
     }
 
 }

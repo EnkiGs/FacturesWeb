@@ -2,39 +2,40 @@
 
 class Client
 {
+    private $id;
     private $statut;
     private $societe;
     private $nom;
     private $prenom;
     private $civ;
-    private $num;
     private $email;
     private $tel;
     private $adresse;
+    private $nomaAfficher;
 
     /**
      * Client constructor.
      * @param $statut
      * @param $nom
      * @param $civ
-     * @param $num
      * @param $email
      * @param $adresse
      * @param $societe
      * @param $prenom
      * @param $tel
      */
-    public function __construct($statut,$nom, $civ, $num, $email, $adresse, $societe, $prenom, $tel)
+    public function __construct($statut,$nom, $civ, $email, $adresse, $societe, $prenom, $tel,$nomaAfficher)
     {
+        $this->id = com_create_guid();
         $this->nom = $nom;
         $this->societe = $societe;
         $this->prenom = $prenom;
         $this->tel = $tel;
         $this->civ = $civ;
-        $this->num = $num;
         $this->email = $email;
         $this->adresse = $adresse;
         $this->statut = $statut;
+        $this->nomaAfficher = $nomaAfficher;
     }
 
     /**
@@ -104,22 +105,6 @@ class Client
     /**
      * @return mixed
      */
-    public function getNum()
-    {
-        return $this->num;
-    }
-
-    /**
-     * @param mixed $num
-     */
-    public function setNum($num)
-    {
-        $this->num = $num;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getEmail()
     {
         return $this->email;
@@ -163,5 +148,29 @@ class Client
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomaAfficher()
+    {
+        return $this->nomaAfficher;
+    }
+
+    /**
+     * @param mixed $nomaAfficher
+     */
+    public function setNomaAfficher($nomaAfficher)
+    {
+        $this->nomaAfficher = $nomaAfficher;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

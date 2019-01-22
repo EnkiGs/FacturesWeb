@@ -1,0 +1,26 @@
+.click{
+    display : block;
+    color:black;
+}
+
+#Clients{
+    margin-top: 50px;
+    width : 500px;
+}
+
+table {
+    width : 400px;
+    border: 2px solid black;
+}
+
+td{
+    padding: 5px 5px 5px 10px;
+}
+
+tr:hover{
+    background-color: rgba(68, 193, 255, 0.71);
+}
+
+a:hover{
+    text-decoration: none;
+}

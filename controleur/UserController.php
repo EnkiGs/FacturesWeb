@@ -6,47 +6,64 @@
  * Time: 08:49
  */
 
-class AdminCtrl
+class UserController
 {
     public function __construct()
     {
         global $rep,$vues; // nécessaire pour utiliser variables globales
 
-        $dVueEreur = array ();
-        $mdlAdmin=new ModeleAdmin();
-        if($mdlAdmin->isAdmin()==NULL){
-            require($rep.$vues['auth']);
+        $erreurs = array ();
+        $mdlUser=new ModeleUser();
+        if($mdlUser->isUser()==NULL){
+            require($rep.$vues['connexion']);
         }
 
         try
         {
-            if(!isset($_REQUEST['action'])){
-                $action=NULL;
-            }
-            else{
-                $action=Nettoyage::nettoyerString($_REQUEST['action']);
-            }
+            $action=Nettoyage::nettoyerString($_REQUEST['action']);
 
             switch($action) {
-                //pas d'action, on r�initialise 1er appel
-                case NULL:
-                    $this->princAdmin();
+                case "accueil":
+                    $this->accueil();
+                    break;
+                case "factures":
+                    break;
+                case "clients":
+                    break;
+                case "addFactureButton":
+                    break;
+                case "addClientButton":
+                    break;
+                case "addFacture":
+                    break;
+                case "addClient":
+                    break;
+                case "rechercher":
+                    break;
+                case "seeFact":
+                    break;
+                case "updateFact":
+                    break;
+                case "pdfFact":
+                    break;
+                case "updateClient":
                     break;
 
-                case "inscriptionClick":
+
+                /*case "inscriptionClick":
                     $this->inscriptionClick();
                     break;
 
                 case "inscription":
                     $this->inscription();
-                    break;
+                    break;*/
 
                 case "deconnexion":
                     $this->deconnexion();
                     break;
                 //mauvaise action
                 default:
-                    $dVueErreur[] =	"Erreur d'appel php";
+                    $erreurs[] =	"Erreur d'appel php";
                     require ($rep.$vues['erreur']);
                     break;
             }
@@ -54,14 +71,14 @@ class AdminCtrl
         } catch (PDOException $e)
         {
             //si erreur BD, pas le cas ici
-            $dVueErreur[] =	"Erreur inattendue!!! PDO... ";
-            $dVueErreur[] =	$e;
+            $erreurs[] =	"Erreur inattendue!!! PDO... ";
+            $erreurs[] =	$e;
             require ($rep.$vues['erreur']);
 
         }
         catch (Exception $e2)
         {
-            $dVueErreur[] =	"Erreur inattendue!!! ";
+            $erreurs[] =	"Erreur inattendue!!! ";
             require ($rep.$vues['erreur']);
         }
 
@@ -69,29 +86,12 @@ class AdminCtrl
         exit(0);
     }//fin constructeur
 
-    private function princAdmin() {  
-        global $rep,$vues,$nbPage; // nécessaire pour utiliser variables globales
-        $r=Validation::validerNumPage($nbPage);
-        if($r==false)
-            $nbPage=1;
-        $m=new ModeleNews();
-        $nbN=$m->nbNews();
-        if($nbN==0){
-            $nbN=1;
-        }
-        $pagespossibles=(int)($nbN/10);
-        if($nbN%10!=0){
-            $pagespossibles=$pagespossibles+1;
-        }
-        if($nbPage>$pagespossibles){
-            $nbPage=$pagespossibles;
-        }
-        $listN=$m->getNews($nbPage);
-        $listB=$m->getBest();
-        require($rep.$vues['vitrineAdmin']);
+    private function accueil() {
+        global $rep,$vues; // nécessaire pour utiliser variables globales
+        require($rep.$vues['accueil']);
     }
 
-    private function inscriptionClick()
+    /*private function inscriptionClick()
     {
         global $rep,$vues; // nécessaire pour utiliser variables globales
         require($rep.$vues['inscritpion']);
@@ -101,24 +101,24 @@ class AdminCtrl
         global $rep,$vues; // nécessaire pour utiliser variables globales
         $login=$_POST['login'];
         $pwd=$_POST['passwd'];
-        $m= new ModeleAdmin();
+        $m= new ModeleUser();
         $admin = $m->inscription($login,$pwd);
         if($admin==NULL){
             require($rep.$vues['inscitpionerror']);
         }
         else{
             $_REQUEST['action']=NULL;
-            new AdminCtrl();
+            new UserController();
         }
-    }
+    }*/
 
     private function deconnexion()
     {
         global $rep,$vues; // nécessaire pour utiliser variables globales
-        $m = new ModeleAdmin();
+        $m = new ModeleUser();
         $m->deconnexion();
         $_REQUEST['action']=NULL;
-        new UserControleur();
+        new VisitorController();
     }
 
 

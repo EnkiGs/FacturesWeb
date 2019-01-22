@@ -16,7 +16,7 @@ require_once($parseur['parseur']);
 
 
 $frontctrl=new FrontController();
-//$cont = new UserControleur();
+//$cont = new VisitorController();
 
 
 ?> 

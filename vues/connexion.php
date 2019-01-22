@@ -18,7 +18,7 @@
             echo "</p>";
         }
     ?>
-    <form action="?action=connexion" method="post">
+    <form action="../index.php?action=connexion" method="post">
         <div class="form-group">
             <label for="login">Login :</label>
             <input class="form-control" type="text" name="login">

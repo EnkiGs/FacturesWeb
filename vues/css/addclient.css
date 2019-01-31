@@ -1,0 +1,50 @@
+#addClients{
+    margin-top: 50px;
+    width : 800px;
+}
+
+h1{
+    font-size: xx-large;
+}
+
+form div{
+    margin-bottom: 15px;
+}
+
+.submitB{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.errors{
+    color: #a80000;
+    font-weight: bold;
+    display: none;
+}
+
+.erreur{
+    border-style: solid;
+    border-color: red;
+    border-radius: 8px;
+    background-color: rgba(255,0,0,0.4);
+    font-weight: bold;
+    font-size: 23px;
+    width: 250px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+.ok{
+    border-style: solid;
+    border-color: blue;
+    border-radius: 8px;
+    background-color: rgba(0,0,255,0.3);
+    font-size: 23px;
+    width: 250px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    color: yellow;
+}

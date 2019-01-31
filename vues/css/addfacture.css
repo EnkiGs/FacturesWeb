@@ -1,0 +1,105 @@
+#addFactures{
+    margin-top: 50px;
+    width : 1000px;
+}
+
+h1{
+    font-size: xx-large;
+}
+
+.submitB{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tableDiv{
+    height: 400px;
+    overflow: auto;
+    border-style: solid;
+    border-radius: 4px;
+    margin: 5px;
+}
+
+#libellesTable{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#libellesTable tr{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #000ae2;
+    border-radius: 8px;
+    display: block;
+    margin: 5px;
+}
+
+#libellesTable td{
+    padding: 20px;
+    display: block;
+}
+
+#libellesTable .form-group{
+    margin: 0;
+}
+
+
+#total{
+    width: 20%;
+    margin-right: 0;
+    margin-left: auto;
+    display: block;
+    text-align: right;
+}
+
+#reglementTitre, #libellesTitre{
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.errors{
+    color: #a80000;
+    font-weight: bold;
+    display: none;
+}
+
+.erreur{
+    border-style: solid;
+    border-color: red;
+    border-radius: 8px;
+    background-color: rgba(255,0,0,0.4);
+    font-weight: bold;
+    font-size: 23px;
+    width: 250px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+.ok{
+    border-style: solid;
+    border-color: blue;
+    border-radius: 8px;
+    background-color: rgba(0,0,255,0.3);
+    font-size: 23px;
+    width: 250px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    color: yellow;
+}
+
+
+.click{
+    display : block;
+    color:black;
+}
+
+tr:hover{
+    background-color: rgba(68, 193, 255, 0.71);
+}
+
+a:hover{
+    text-decoration: none;
+}

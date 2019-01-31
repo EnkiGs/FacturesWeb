@@ -17,22 +17,27 @@ class UserGateway
     }
 
     public function checkUser($login,$pwd){
-        $query='SELECT pwd FROM User where login=:login';
+        $query='SELECT pwd FROM Factures_User where login=:login';
         $this->con->executeQuery($query,array(":login" => array($login,PDO::PARAM_STR)));
         $r=$this->con->getResults();
-        if(count($r)!=0 && password_verify($pwd,$r[0][0])){
-            return true;
+        if(count($r)==0){
+            return 0;
         }
-        return false;
+        elseif (!password_verify($pwd,$r[0][0])){
+            return 1;
+        }
+        else{
+            return 2;
+        }
     }
 
     public function addUser($login,$pwd,$nom, $num, $email, $adresse, $tel){
-        $query='SELECT count(*) FROM User where login=:login';
+        $query='SELECT count(*) FROM Factures_User where login=:login';
         $this->con->executeQuery($query,array(":login" => array($login,PDO::PARAM_STR)));
         $r=$this->con->getResults();
         if($r[0]["count(*)"]==0){
             $pwd=password_hash($pwd, PASSWORD_DEFAULT);
-            $query='INSERT into User values(:login,:pwd,:nom, :num, :email, :rue, :codeP, :ville, :tel)';
+            $query='INSERT into Factures_User values(:login,:pwd,:nom, :num, :email, :rue, :codeP, :ville, :tel)';
             $this->con->executeQuery($query,array(":login" => array($login,PDO::PARAM_STR),":pwd" => array($pwd,PDO::PARAM_STR),
                                                     ":nom" => array($nom,PDO::PARAM_STR),":num" => array($num,PDO::PARAM_STR),
                                                     ":email" => array($email,PDO::PARAM_STR),":rue" => array($adresse[0],PDO::PARAM_STR),
@@ -44,12 +49,12 @@ class UserGateway
     }
 
     public function delUser($login){
-        $query='delete from User where login=:login';
+        $query='delete from Factures_User where login=:login';
         $this->con->executeQuery($query,array(":login" => array($login,PDO::PARAM_STR)));
     }
 
     public function getUser($login){
-        $query='SELECT * FROM User where login=:login';
+        $query='SELECT * FROM Factures_User where login=:login';
         $this->con->executeQuery($query,array(":login" => array($login,PDO::PARAM_STR)));
         $r=$this->con->getResults();
         foreach ($r as $item){

@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Connexion</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/connexion.css" />
+    <link href="vues/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="vues/css/connexion.css" />
 </head>
 <body>
 <section class="connexion container-fluid">
@@ -18,9 +18,9 @@
             echo "</p>";
         }
     ?>
-    <form action="../index.php?action=connexion" method="post">
+    <form action="index.php?action=connexion" method="post">
         <div class="form-group">
-            <label for="login">Login :</label>
+            <label for="login">Login  :</label>
             <input class="form-control" type="text" name="login">
         </div>
         <div class="form-group">

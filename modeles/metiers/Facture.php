@@ -3,12 +3,14 @@
 class Facture
 {
     private $id;
+    private $ref;
     private $client;
     private $dateE;
     private $objet;
     private $total;
     private $modeP;
     private $dateP;
+    private $libelles;
 
     /**
      * Facture constructor.
@@ -19,25 +21,18 @@ class Facture
      * @param $modeP
      * @param $dateP
      */
-    public function __construct($client,$dateE,$objet,$total,$modeP,$dateP)
+    public function __construct($id,$ref,$client,$dateE,$objet,$total,$modeP,$dateP,$libelles)
     {
-        $this->id = com_create_guid();
+        $this->id = $id;
+        $this->ref = $ref;
         $this->client = $client;
         $this->dateE = $dateE;
         $this->objet = $objet;
         $this->total = $total;
         $this->modeP = $modeP;
         $this->dateP = $dateP;
+        $this->libelles = $libelles;
     }
-
-/*    public function Update($newDateE, $newObjet, $newTotal, $newModeP, $newDateP)
-    {
-        $this->dateE = $newDateE;
-        $this->objet = $newObjet;
-        $this->total = $newTotal;
-        $this->modeP = $newModeP;
-        $this->dateP = $newDateP;
-    }*/
 
     /**
      * @return mixed
@@ -141,6 +136,38 @@ class Facture
     public function setDateP($dateP)
     {
         $this->dateP = $dateP;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLibelles()
+    {
+        return $this->libelles;
+    }
+
+    /**
+     * @param mixed $libelles
+     */
+    public function setLibelles($libelles)
+    {
+        $this->libelles = $libelles;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRef()
+    {
+        return $this->ref;
+    }
+
+    /**
+     * @param mixed $ref
+     */
+    public function setRef($ref)
+    {
+        $this->ref = $ref;
     }
 
 

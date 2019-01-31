@@ -24,13 +24,93 @@ class Libelle
      * @param $qte
      * @param $total
      */
-    public function __construct($facture, $description, $prixU, $qte, $total)
+    public function __construct($id, $facture, $description, $prixU, $qte, $total)
     {
-        $this->id = com_create_guid();
+        $this->id = $id;
         $this->facture = $facture;
         $this->description = $description;
         $this->prixU = $prixU;
         $this->qte = $qte;
+        $this->total = $total;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacture()
+    {
+        return $this->facture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrixU()
+    {
+        return $this->prixU;
+    }
+
+    /**
+     * @param mixed $prixU
+     */
+    public function setPrixU($prixU)
+    {
+        $this->prixU = $prixU;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQte()
+    {
+        return $this->qte;
+    }
+
+    /**
+     * @param mixed $qte
+     */
+    public function setQte($qte)
+    {
+        $this->qte = $qte;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * @param mixed $total
+     */
+    public function setTotal($total)
+    {
         $this->total = $total;
     }
 }

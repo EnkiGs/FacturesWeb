@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Factures</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/commun.css" />
-    <link type="text/css" rel="stylesheet" href="css/factures.css" />
+    <link href="vues/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="vues/css/commun.css" />
+    <link type="text/css" rel="stylesheet" href="vues/css/factures.css" />
 </head>
 <body>
 <header class="container-fluid">
     <label class="seeL">Consulter : </label>
     <label class="addL">Ajouter : </label><br/>
-    <a class="btn btn-primary seeB" href="../index.php?action=factures">Factures</a>
-    <a class="btn btn-primary seeB" href="../index.php?action=clients">Clients</a>
-    <a class="btn btn-primary addB" href="../index.php?action=addFactureButton">Facture</a>
-    <a class="btn btn-primary addB" href="../index.php?action=addClientButton">Client</a>
+    <a class="btn btn-primary seeB" href="index.php?action=factures">Factures</a>
+    <a class="btn btn-primary seeB" href="index.php?action=clients">Clients</a>
+    <a class="btn btn-primary addB" href="index.php?action=addFactureButton">Facture</a>
+    <a class="btn btn-primary addB" href="index.php?action=addClientButton">Client</a>
     <h1> Factures </h1>
 </header>
 <section id="Factures" class="container-fluid">
     <section id="form">
         <p class="formTitle">Rechercher : </p>
-        <form action="../index.php?action=rechercherFact" method="post">
+        <form action="index.php?action=rechercherFact" method="post">
             <div class="form-group">
                 <label for="nom">Nom</label>
                 <input class="form-control" type="text" name="nom">
@@ -33,7 +33,7 @@
                     <option value="1">12 derniers mois</option>
                 </select>
             </div>
-            <button class="btn btn-secondary" type="submit"><img src="images/recherche.png"/></button>
+            <button class="btn btn-secondary" type="submit"><img src="vues/images/recherche.png" alt="Rechercher"/></button>
 
         </form>
     </section>
@@ -47,9 +47,9 @@
                 foreach($listF as $f){
                     echo '<tr>
                             <td>
-                                <a href="../index.php?action=seeFact&fact="'.$f->getId().'><img src="images/seeico.png"/></a>
-                                <a href="../index.php?action=updateFact&fact="'.$f->getId().'><img src="images/updateico.png"/></a>
-                                <a href="../index.php?action=pdfFact&fact="'.$f->getId().'><img src="images/pdfico.png"/></a>
+                                <a href="index.php?action=seeFact&fact="'.$f->getId().'><img src="vues/images/seeico.png"/></a>
+                                <a href="index.php?action=updateFact&fact="'.$f->getId().'><img src="vues/images/updateico.png"/></a>
+                                <a href="index.php?action=pdfFact&fact="'.$f->getId().'><img src="vues/images/pdfico.png"/></a>
                             </td>
                             <td>'.$f->getRef().'</td>
                             <td>'.$f->getDateE().'</td>
@@ -71,11 +71,8 @@
 
 </section>
 <footer>
-    <a class="btn btn-danger deco" href="../index.php?action=deconnexion">Deconnexion</a>
+    <a class="btn btn-danger deco" href="index.php?action=deconnexion">Deconnexion</a>
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/java.js">
-</script>
+<script src="vues/js/bootstrap.min.js"></script>
 </body>
 </html>

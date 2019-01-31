@@ -24,9 +24,9 @@ class Client
      * @param $prenom
      * @param $tel
      */
-    public function __construct($statut,$nom, $civ, $email, $adresse, $societe, $prenom, $tel,$nomaAfficher)
+    public function __construct($id, $statut,$nom, $civ, $email, $adresse, $societe, $prenom, $tel,$nomaAfficher)
     {
-        $this->id = com_create_guid();
+        $this->id = $id;
         $this->nom = $nom;
         $this->societe = $societe;
         $this->prenom = $prenom;

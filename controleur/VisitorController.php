@@ -10,8 +10,7 @@ class VisitorController {
         //debut
 
         //on initialise un tableau d'erreur
-        $erreurs = array ();
-
+        $erreurs = array();
         try
         {
             if(isset($_REQUEST['action'])==false){
@@ -25,11 +24,15 @@ class VisitorController {
 
                 //pas d'action, on réinitialise 1er appel
                 case NULL:
-                    $this->pageCo();
+                    $this->pageCo(NULL);
                     break;
                     
                 case "connexion":
                     $this->connexion();
+                    break;
+
+                case "addUser":
+                    $this->addUser();
                     break;
 
 
@@ -59,24 +62,51 @@ class VisitorController {
     }//fin constructeur
 
 
-    private function pageCo() {
+    private function pageCo($tabE) {
         global $rep,$vues; // nécessaire pour utiliser variables globales*
         require_once($rep.$vues['connexion']);
     }
 
     private function connexion(){
-        global $rep,$vues; // nécessaire pour utiliser variables globales
+        global $rep,$vues;
+        $erreurs = array();
+
         $login=$_POST['login'];
         $pwd=$_POST['passwd'];
         $m= new ModeleUser();
         $user = $m->connexion($login,$pwd);
-        if($user==NULL){
-            $this->pageCo();
+        switch ($user){
+            case 0:
+                $tabE[]="Identifiant incorrect";
+                $this->pageCo($tabE);
+                break;
+
+            case 1:
+                $tabE[]="Mot de passe incorrect";
+                $this->pageCo($tabE);
+                break;
+
+            case 2:
+                $_REQUEST['action']='accueil';
+                new UserController();
+                break;
+
+            default:
+                $erreurs[] = "Erreur inattendue connexion!!! ";
+                require ($rep.$vues['erreur']);
+                break;
         }
-        else{
-            $_REQUEST['action']='accueil';
-            new UserController();
-        }
+    }
+
+    private function addUser()
+    {
+        $login = Nettoyage::nettoyerString($_GET['login']);
+        $pwd = Nettoyage::nettoyerString($_GET['pwd']);
+        $nom = Nettoyage::nettoyerString($_GET['nom']);
+        $num = Nettoyage::nettoyerString($_GET['num']);
+        $email = Nettoyage::nettoyerString($_GET['email']);
+        $mu = new ModeleUser();
+        $mu->addUser($login,$pwd,$nom,$num,$email,[NULL,NULL,NULL],NULL);
     }
 
 }//fin class

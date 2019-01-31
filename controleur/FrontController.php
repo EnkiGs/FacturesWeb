@@ -11,7 +11,6 @@ class FrontController
     public function __construct()
     {
         global $rep,$vues;
-        session_start();
         $listeActions_Visitor=array(NULL,'connexion');
         $mdl_user=new ModeleUser();
         try{
@@ -22,7 +21,7 @@ class FrontController
             else{
                 $action=Nettoyage::nettoyerString($_REQUEST['action']);
             }
-            if(!in_array($action,$listeActions_Visitor) && $a!=NULL){
+            if((!in_array($action,$listeActions_Visitor) && $a!=NULL) || ($action==NULL && $a!=NULL)){
                 new UserController();
             }
             else{
